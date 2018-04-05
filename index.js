@@ -1,11 +1,10 @@
 const express = require('express');
 const routes = require('./routes');
+const app = express();
 
 const port = 5000 || process.env.PORT;
 
-const app = express();
-
-app.use('/', routes);
+routes(app);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));
